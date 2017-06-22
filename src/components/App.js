@@ -8,41 +8,42 @@ const textify = (date) => (
     date.getMinutes().toString().padStart(2, '0') + ':' +
     date.getSeconds().toString().padStart(2, '0') + ':' +
     date.getMilliseconds().toString().padStart(3, '0')
-)
+);
 
-const AppComponent = ({date, update}) => {
+const AppComponent = ({date, color, update}) => {
     setInterval(update, 1);
 
     return (
         <div className="horloge">
-            <code>{textify(date)}</code>
+            <code style={{color: color}}>{textify(date)}</code>
         </div>
     )
-
-}
+};
 
 AppComponent.propTypes = {
     time: PropTypes.string,
-}
+};
 
 /*-------------------------------*/
 
 import { connect } from 'react-redux'
 import { tick } from '../actions/Tick'
+import { click } from  '../actions/Tick'
 
 const mapStateToProps = ({timeReducers}, ownProps) => {
     return {
-        date: timeReducers.date
+        date: timeReducers.date,
+        color: timeReducers.color
     }
-}
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    update: () => dispatch(tick())
-})
+    update: () => dispatch(tick(), click())
+});
 
 const App = connect(
     mapStateToProps,
     mapDispatchToProps,
-)(AppComponent)
+)(AppComponent);
 
 export default App

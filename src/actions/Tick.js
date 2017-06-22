@@ -5,7 +5,11 @@
  ** Tick.js
  ** 2017 - All rights reserved
  ***************************************/
- 
+
 export const tick = () => ({
     type: 'TICK'
-})
+});
+
+export const click = () => ({
+   type: 'CLICK'
+});
