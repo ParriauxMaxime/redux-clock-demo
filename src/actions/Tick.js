@@ -9,7 +9,3 @@
 export const tick = () => ({
     type: 'TICK'
 });
-
-export const click = () => ({
-   type: 'CLICK'
-});
