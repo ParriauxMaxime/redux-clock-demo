@@ -7,5 +7,9 @@
  ***************************************/
  
 export const tick = () => ({
-    type: 'TICK'
+    type: 'TICK',
+})
+
+export const changeColor = () => ({
+    type: 'CHANGE_COLOR',
 })

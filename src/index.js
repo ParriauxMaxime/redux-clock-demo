@@ -12,6 +12,6 @@ const store = createStore(reducers)
 
 render(
     <Provider store={store}>
-        <App/>
+        <App color={"blue"}/>
     </Provider>
     , document.querySelector('#app'))

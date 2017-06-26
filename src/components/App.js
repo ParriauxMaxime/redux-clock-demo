@@ -10,34 +10,35 @@ const textify = (date) => (
     date.getMilliseconds().toString().padStart(3, '0')
 )
 
-const AppComponent = ({date, update}) => {
-    setInterval(update, 1);
+const AppComponent = ({date, update, changeColor, color}) => {
+    setInterval(update, 200);
 
     return (
         <div className="horloge">
-            <code>{textify(date)}</code>
+            <code style={{color, userSelect: 'none'}} onClick={changeColor}>{textify(date)}</code>
         </div>
     )
 
 }
 
 AppComponent.propTypes = {
-    time: PropTypes.string,
 }
 
 /*-------------------------------*/
 
 import { connect } from 'react-redux'
-import { tick } from '../actions/Tick'
+import { tick, changeColor } from '../actions/Tick'
 
 const mapStateToProps = ({timeReducers}, ownProps) => {
     return {
-        date: timeReducers.date
+        date: timeReducers.date,
+        color: timeReducers.color
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    update: () => dispatch(tick())
+    update: () => dispatch(tick()),
+    changeColor: () => dispatch(changeColor())
 })
 
 const App = connect(
