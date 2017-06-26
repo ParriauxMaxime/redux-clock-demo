@@ -7,12 +7,12 @@ const initialState = {
 };
 
 const timeReducers = (state = initialState, action) => {
-	// if (action.type !== "TICK")
-	// 	console.log("ACTION = " + action.type);
 	switch (action.type) {
 		case 'TICK':
 			return Object.assign({}, ...state, { date: new Date(Date.now()) });
 			break;
+		case 'CHANGE_COLOR':
+			return Object.assign({}, ...state, { color: "green" });
 		default:
 			return state;
 	}
